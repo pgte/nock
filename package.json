@@ -62,7 +62,9 @@
     "lint:ts": "dtslint --expectOnly types",
     "test": "nyc --reporter=lcov --reporter=text mocha --recursive tests",
     "test:coverage": "open coverage/lcov-report/index.html",
-    "test:jest": "jest tests_jest --detectLeaks"
+    "test:jest": "run-s test:jest-leak-detection test:jest-no-leak-detection",
+    "test:jest-leak-detection": "jest tests_jest/with_leak_detection --detectLeaks",
+    "test:jest-no-leak-detection": "jest tests_jest/no_leak_detection"
   },
   "license": "MIT",
   "files": [
